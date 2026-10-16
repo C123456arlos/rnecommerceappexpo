@@ -5,6 +5,8 @@ import { clerkMiddleware } from '@clerk/express'
 import { serve } from 'inngest/express'
 import {functions, inngest} from './config/inngest.js'
 import { ENV } from './config/env.js'
+import { connectDB } from './config/db.js'
+dns.setServers(["1.1.1.1"])
 const app = express()
 const __dirname = path.resolve()
 app.use(express.json())
@@ -19,4 +21,10 @@ if (ENV.NODE_ENV === 'production') {
         res.sendFile(path.join(__dirname, '../admin', 'dist', 'index.html'))
     })
 }
-app.listen(ENV.PORT, ()=>console.log('server is up and running'))
+const startServer = async () => {
+    await connectDB()
+    app.listen(ENV.PORT, () => {
+        console.log('server is up and running')
+    })
+}
+startServer()
