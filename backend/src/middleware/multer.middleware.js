@@ -2,7 +2,11 @@ import multer from 'multer'
 import path from 'path'
 const storage = multer.diskStorage({
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`)
+        // cb(null, `${Date.now()}-${file.originalname}`)
+        const ext = path.extname(file.originalname || '').toLowerCase()
+        const safeExt = ['.jpeg', '.jpg', '.png', '.webp'].includes(ext) ? ext : ''
+        const unique = `${Date.now()}-${Math.round(Math.random() * 1e9)}`
+        cb(null, `${unique}${safeExt}`)
     }
 })
 const fileFilter = (req, file, cb) => {
