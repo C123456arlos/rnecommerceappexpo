@@ -8,6 +8,7 @@ import { ENV } from './config/env.js'
 import { connectDB } from './config/db.js'
 import adminRoutes from './routes/admin.route.js'
 import userRoutes from './routes/user.route.js'
+import orderRoutes from './routes/order.route.js'
 dns.setServers(["1.1.1.1"])
 const app = express()
 const __dirname = path.resolve()
@@ -16,6 +17,7 @@ app.use(clerkMiddleware())
 app.use('/api/inngest', serve({ client: inngest, functions: functions }))
 app.use('/api/admin', adminRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/orders', orderRoutes)
 app.get('/api/health', (req, res) => {
     res.status(200).json({message:'success'})
 })
