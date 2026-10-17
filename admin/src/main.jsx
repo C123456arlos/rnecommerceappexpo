@@ -16,4 +16,3 @@ createRoot(document.getElementById('root')).render(
     
     </ClerkProvider>
 )
-// 1:51
