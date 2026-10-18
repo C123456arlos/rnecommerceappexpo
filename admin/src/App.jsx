@@ -7,17 +7,11 @@ import OrdersPage from './pages/OrdersPage'
 import CustomersPage from './pages/CustomersPage'
 import DashboardLayout from './layouts/DashboardLayout'
 import { LoaderIcon } from 'lucide-react'
+import PageLoader from './components/PageLoader'
 
 function App() {
   const { isSignedIn, isLoaded } = useAuth()
-  if (!isLoaded) {
-    return (
-      <div className='flex items-center justify-center h-screen'>
-        <LoaderIcon className='size-12 animate-spin'></LoaderIcon>
-      </div>
-    ) 
-    
-  }
+  if (!isLoaded) return <PageLoader></PageLoader>
   return (
   <Routes>
       <Route path='/login' element={isSignedIn ? <Navigate to={'/dashboard'}></Navigate> : <LoginPage></LoginPage>}></Route>
