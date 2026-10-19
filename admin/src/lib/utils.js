@@ -1,4 +1,5 @@
 export const capitalizeText = (text) => {
+    if (!text) return text
     return text.charAt(0).toUppercase() + text.slice(1)
 }
 export const getOrderStatusBadge = (status) => {
@@ -19,6 +20,9 @@ export const getStockStatusBadge = (stock) => {
     return { text:'in stock', class:'badge-success'}
 }
 export const formatDate = (dateString) => {
+    if (!dateString) return ''
+    const date = new Date(dateString)
+    if(isNaN(date.getTime())) return ''
     return new Date(dateString).toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric',

@@ -11,11 +11,11 @@ function DashboardPage() {
     queryKey: ['dashboardStats'],
     queryFn:statsApi.getDashboard
   })
-  const recentOrders = ordersData.orders.slice(0, 5) || []
+  const recentOrders = ordersData?.orders?.slice(0, 5) || []
   const statsCards = [
     {
       name: 'total revenue',
-      value: statsLoading ? '...' : `$${statsData.totalRevenue.toFixed(2) || 0}`,
+      value: statsLoading ? '...' : `$${statsData?.totalRevenue?.toFixed(2) || 0}`,
       icon: <DollarSignIcon className='w-8 h-8'></DollarSignIcon>
     },
     {
