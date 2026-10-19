@@ -5,7 +5,6 @@ import {NAVIGATION} from './Navbar'
 function Sidebar() {
   const location = useLocation()
   const { user } = useUser()
-  console.log('user is here', user)
   return (
     <div className="drawer-side is-drawer-close:overflow-visible">
  
@@ -44,7 +43,7 @@ function Sidebar() {
             <p className="flex-sm font-semibold truncate">
               {user?.firstName} {user?.lastName}
             </p>
-            <p className="text-xs opacity-60 truncate">{user?.emailAddresses[0].emailAddress}</p>
+            <p className="text-xs opacity-60 truncate">{user?.emailAddresses?.[0].emailAddress}</p>
           </div>
         </div>
       </div>
