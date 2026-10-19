@@ -3,9 +3,9 @@ import React from 'react'
 
 function LoginPage() {
   return (
-      <div>LoginPage
-         
-      <SignIn></SignIn></div>
+      <div className='h-screen flex justify-center items-center'>
+      <SignIn></SignIn>
+    </div>
   )
 }
 
