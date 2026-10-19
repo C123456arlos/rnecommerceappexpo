@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/react";
 import { createRoot } from 'react-dom/client'
 import {BrowserRouter} from 'react-router'
 import './index.css'
@@ -9,6 +10,17 @@ if (!PUBLISHABLE_KEY) {
   throw new Error('missing publishable key')
 }
 const queryClient = new QueryClient()
+
+Sentry.init({
+  dsn: import.meta.env.VITE_SENTRY_DSN,
+  sendDefaultPii: true,
+  enableLogs: true,
+    integrations: [
+    Sentry.replayIntegration()
+  ],
+  replaysSessionSampleRate:1.0,
+  replaysOnErrorSampleRate: 1.0 
+});
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY}>

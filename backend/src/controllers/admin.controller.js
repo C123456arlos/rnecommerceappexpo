@@ -110,7 +110,8 @@ export async function updateOrderStatus(req, res) {
 export async function getAllCustomers(_, res) { 
     try {
         const customers = await User.find().sort({ createdAt: -1 })
-        res.status(200).json({customers})
+        
+        res.status(200).json({ customers })
     } catch (error) {
         console.error('Error fetching customers', error)
         res.status(500).json({error:'Internal server error'})
