@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { orderApi, statsApi } from '../lib/api'
 import { DollarSignIcon, PackageIcon, ShoppingBagIcon, UsersIcon } from 'lucide-react'
 import { capitalizeText, formatDate, getOrderStatusBadge } from '../lib/utils'
+
 function DashboardPage() {
   const { data:ordersData, isLoading:ordersLoading } = useQuery({
     queryKey: ['orders'],
@@ -107,5 +108,7 @@ function DashboardPage() {
     </div>
   )
 }
+
+
 
 export default DashboardPage
